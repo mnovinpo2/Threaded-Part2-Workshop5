@@ -12,7 +12,13 @@ public partial class Customer
     [Key]
     public int CustomerId { get; set; }
 
-    [StringLength(25)]
+	[StringLength(20)]
+	public string? Username { get; set; }
+
+	[StringLength(20)]
+	public string? Password { get; set; }
+
+	[StringLength(25)]
     public string CustFirstName { get; set; } = null!;
 
     [StringLength(25)]
