@@ -1,0 +1,105 @@
+USE [TravelExperts]
+GO
+ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [FK_Customers_Agents]
+GO
+/****** Object:  Index [aaaaaCustomers_PK]    Script Date: 2024-02-10 7:03:23 PM ******/
+ALTER TABLE [dbo].[Customers] DROP CONSTRAINT [aaaaaCustomers_PK]
+GO
+/****** Object:  Table [dbo].[Customers]    Script Date: 2024-02-10 7:03:23 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Customers]') AND type in (N'U'))
+DROP TABLE [dbo].[Customers]
+GO
+/****** Object:  Table [dbo].[Customers]    Script Date: 2024-02-10 7:03:23 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customers](
+	[CustomerId] [int] IDENTITY(1,1) NOT NULL,
+	[CustFirstName] [nvarchar](25) NOT NULL,
+	[CustLastName] [nvarchar](25) NOT NULL,
+	[CustAddress] [nvarchar](75) NOT NULL,
+	[CustCity] [nvarchar](50) NOT NULL,
+	[CustProv] [nvarchar](2) NOT NULL,
+	[CustPostal] [nvarchar](7) NOT NULL,
+	[CustCountry] [nvarchar](25) NULL,
+	[CustHomePhone] [nvarchar](20) NULL,
+	[CustBusPhone] [nvarchar](20) NOT NULL,
+	[CustEmail] [nvarchar](50) NOT NULL,
+	[AgentId] [int] NULL,
+	[Username] [nvarchar](30) NULL,
+	[Password] [nvarchar](30) NULL
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Customers] ON 
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (104, N'Laetia', N'Enison', N'144-61 87th Ave, NE', N'Calgary', N'AB', N'T2J 6B6', N'Canada', N'4032791223', N'4032557865', N'                                                  ', 4, N'lenison', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (105, N'Angel', N'Moskowitz', N'320 John St., NE', N'Calgary', N'AB', N'T2J 7E3', N'Canada', N'4032794228', N'4036409874', N'amoskowitz@home.com                               ', 3, N'amoskowitz', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (106, N'Judith', N'Olvsade', N'29 Elmwood Ave.,', N'Calgary', N'AB', N'T2Z 3M9', N'Canada', N'4032795652', N'4036861598', N'jolvsade@aol.com                                  ', 1, N'jolvsade', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (107, N'Catherine', N'Mierzwa', N'22-70 41st St.,NW', N'Calgary', N'AB', N'T2Z 2Z9', N'Canada', N'4032796878', N'4036404563', N'cmierzwa@msn.com                                  ', 5, N'cmierzwa', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (108, N'Judy', N'Sethi', N'63 Stratton Hall, SW', N'Calgary', N'AB', N'T1Y 6N4', N'Canada', N'4032795111', N'4036204789', N'judysehti@home.com                                ', 7, N'jsethi', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (109, N'Larry', N'Walter', N'38 Bay 26th ST. #2A, NE', N'Calgary', N'AB', N'T2J 6B6', N'Canada', N'4032793254', N'4032845588', N'lwalter@aol.com                                   ', 4, N'lwalter', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (114, N'Winsome', N'Laporte', N'268 E.3rd St, SW', N'Calgary', N'AB', N'T1Y 6N4', N'Canada', N'4032691125', N'4032844565', N'                                                  ', 8, N'wlaporte', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (117, N'Nancy', N'Kuehn', N'44-255 9th St., SW', N'Calgary', N'AB', N'T1Y 6N5', N'Canada', N'4032693965', N'4032843211', N'                                                  ', 6, N'nkuehn', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (118, N'Hiedi', N'Lopez', N'168 Rowayton Ave, NW', N'Calgary', N'AB', N'T3A 4ZG', N'Canada', N'4032699856', N'4035901587', N'hlopez@aol.com                                    ', 5, N'hlopez', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (119, N'Mardig', N'Abdou', N'160-04 32nd Ave., SW', N'Calgary', N'AB', N'T2P 2G7', N'Canada', N'4032691429', N'4032251952', N'                                                  ', 9, N'mabdou', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (120, N'Ralph', N'Alexander', N'2054 73rd St, SW', N'Calgary', N'AB', N'T2P 2G7', N'Canada', N'4032691634', N'4032256547', N'                                                  ', 1, N'ralexander', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (121, N'Sean', N'Pineda', N'3 Salem Rd., NW', N'Calgary', N'AB', N'T2K 3E3', N'Canada', N'4032691954', N'4036864444', N'spineda@hotmail.com                               ', 3, N'spineda', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (122, N'Julita', N'Lippen', N'51-76 VanKleeck St., NW', N'Calgary', N'AB', N'T2K 6C5', N'Canada', N'4032551956', N'4035901478', N'jlippen@cadvision.co                              ', 4, N'jlippen', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (123, N'Pierre', N'Radicola', N'322 Atkins Ave., SE', N'Calgary', N'AB', N'T3G 2C6', N'Canada', N'4032551677', N'4036867536', N'pradicola@home.com                                ', 8, N'pradicola', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (127, N'Gary', N'Aung', N'135-32 Louis Blvd, NE', N'Calgary', N'AB', N'T2V 2K5', N'Canada', N'4032807858', N'4037501587', N'                                                  ', 9, N'gaung', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (128, N'Jeff', N'Runyan', N'109-15 Queens Blvd., NE', N'Calgary', N'AB', N'T2V 2K6', N'Canada', N'4032809635', N'4036201122', N'jrunyan@aol.com                                   ', 5, N'jrunyan', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (130, N'Lula', N'Oates', N'11A Emory St., NE', N'Calgary', N'AB', N'T3E 3Z4', N'Canada', N'4032439653', N'4036861587', N'loates@aol.com                                    ', 9, N'loates', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (133, N'James', N'Reed', N'109-621 96th St, NE', N'Calgary', N'AB', N'T3E 4A1', N'Canada', N'4032432358', N'4037201155', N'jreed@aol.com                                     ', 2, N'jreed', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (135, N'Michelle', N'Masser', N'379 Ovington Ave, NE', N'Calgary', N'AB', N'T2J 2S9', N'Canada', N'4032441586', N'4035908522', N'mmasser@aol.com                                   ', 6, N'mmasser', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (138, N'John', N'Smith', N'45 Plaza St. West #2D, NE', N'Calgary', N'AB', N'T3E 5C7', N'Canada', N'4032449653', N'4032837896', N'johnSmith@hotmail.co                              ', 7, N'jsmith', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (139, N'Angelo', N'Garshman', N'82 Western Ave., NE', N'Calgary', N'AB', N'T3E 5C8', N'Canada', N'4032259966', N'4032696541', N'                                                  ', 3, N'agarshman', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (140, N'Derrick', N'Baltazar', N'9111 Church Ave. #3N, NE', N'Calgary', N'AB', N'T3E 5C9', N'Canada', N'4032255231', N'4037502547', N'                                                  ', 6, N'dbaltazar', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (141, N'Robert', N'Boyd', N'96-04 57th Ave #12A, NE', N'Calgary', N'AB', N'T3E 5C5', N'Canada', N'4032255647', N'4037509512', N'                                                  ', 3, N'rboyd', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (142, N'Monica', N'Waldman', N'257 Depot Rd., NE', N'Calgary', N'AB', N'T2J 6P3', N'Canada', N'4032255629', N'4032844566', N'mwaldman@aol.com                                  ', 2, N'mwaldman', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (143, N'Gerard', N'Biers', N'205 19th St., NE', N'Calgary', N'AB', N'T2J 6B6', N'Canada', N'4032251952', N'4037506578', N'                                                  ', 8, N'gbiers', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (144, N'Ken', N'Wong', N'address', N'Calgary', N'AB', N'T3H5Z1', N'Canada', N'403-284-0793', N'825-449-0252', N'mnovinpo2@gmail.com', NULL, N'kwong', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (145, N'Rick', N'Sanchez', N'address', N'Calgary', N'AB', N'T3H5Z1', N'Canada', N'8254492270', N'8254492270', N'mohsen.novinpour@sait.edu.ca', NULL, N'rsanchez', N'password')
+GO
+INSERT [dbo].[Customers] ([CustomerId], [CustFirstName], [CustLastName], [CustAddress], [CustCity], [CustProv], [CustPostal], [CustCountry], [CustHomePhone], [CustBusPhone], [CustEmail], [AgentId], [Username], [Password]) VALUES (146, N'Ghazal', N'Nabhani Mahareb Pour', N'102 Aspen Stone Terrace', N'Calgary', N'ab', N'T3H5Z1', N'Canada', N'8254492270', N'8254492270', N'mohsen.novinpour@sait.edu.ca', NULL, N'test', N'password')
+GO
+SET IDENTITY_INSERT [dbo].[Customers] OFF
+GO
+/****** Object:  Index [aaaaaCustomers_PK]    Script Date: 2024-02-10 7:03:23 PM ******/
+ALTER TABLE [dbo].[Customers] ADD  CONSTRAINT [aaaaaCustomers_PK] PRIMARY KEY NONCLUSTERED 
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Customers]  WITH CHECK ADD  CONSTRAINT [FK_Customers_Agents] FOREIGN KEY([AgentId])
+REFERENCES [dbo].[Agents] ([AgentId])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[Customers] CHECK CONSTRAINT [FK_Customers_Agents]
+GO
