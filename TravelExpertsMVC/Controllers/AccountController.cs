@@ -33,6 +33,7 @@ namespace TravelExpertsMVC.Controllers
                 return View();
             }
             //TempData["CustomerId"] = cst.ID;
+            HttpContext.Session.SetInt32("CustomerId", cst.CustomerId);
 
             List<Claim> claims = new List<Claim>
             {

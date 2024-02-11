@@ -6,6 +6,7 @@ using TravelExpertsData;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TravelExpertsMVC.Controllers
 {
@@ -32,77 +33,69 @@ namespace TravelExpertsMVC.Controllers
             {
                 Console.WriteLine("error", ex.Message);
                 return Redirect("/");
-
             }
         }
-
-            // GET: CustomerController/Details/5
-            public ActionResult Details(int id)
+        /// <summary>
+        /// Controller for Customer Profile 
+        /// Written By Mustafa 
+        /// </summary>
+        /// <returns>Customer Details View</returns>
+        [Authorize]
+        public ActionResult Profile()
         {
-            return View();
-        }
-
-        // GET: CustomerController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CustomerController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
+            Customer? cust = null!;
             try
             {
-                return RedirectToAction(nameof(Index));
+                int? id = HttpContext.Session.GetInt32("CustomerId")!;
+
+                if (id != null) // get id from session if not null
+                    cust = CustomerDB.FindByID(this.db, (int)id);
             }
             catch
             {
                 return View();
             }
+            return View(cust);
         }
-
-        // GET: CustomerController/Edit/5
+		/// <summary>
+		/// Controller for customer edit page
+		/// Written By Mustafa 
+		/// </summary>
+		/// <param name="id">id of customer</param>
+		/// <returns>edit view with inputs filled in</returns>
+		[Authorize]
         public ActionResult Edit(int id)
         {
-            return View();
-        }
-
-        // POST: CustomerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
+            Customer? cust = null!;
             try
             {
-                return RedirectToAction(nameof(Index));
+                cust = CustomerDB.FindByID(this.db, id);
             }
             catch
             {
                 return View();
             }
+            return View(cust);
         }
-
-        // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CustomerController/Delete/5
+		/// <summary>
+		/// Controller for updateing the customer
+		/// Written By Mustafa 
+		/// </summary>
+		/// <param name="cus">Customer to Update</param>
+		/// <returns>Profile view with updated details</returns>
+		[Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Edit(Customer cus)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                CustomerDB.UpdateCustomer(this.db, cus);
             }
             catch
             {
                 return View();
             }
+            return View("Profile",cus);
         }
     }
 }

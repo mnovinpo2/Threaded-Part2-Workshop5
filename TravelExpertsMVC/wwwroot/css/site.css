@@ -20,3 +20,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+.profile-edit a{
+    text-decoration: none;
+    color: black;
+}
+.profile-edit a:hover{
+    text-decoration: underline;
+}

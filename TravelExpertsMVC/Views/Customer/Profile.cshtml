@@ -1,0 +1,51 @@
+﻿@model TravelExpertsData.Customer
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+    <div class="text-center">
+	<h1 class="text-capitalize mt-5">@Model.Username</h1>
+	<div class="my-4 profile-edit fs-5">
+		@Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId })
+	</div>
+
+    <hr/>
+    <div class="row justify-content-center align-items-center fw-medium text-capitalize">
+        <div class="col-12">
+			<p><span class="me-2">Username: </span> @Model.Username </p>
+		</div> 
+      
+        <div class="col-12">
+            <p><span class="me-2">First Name: </span>@Model.CustFirstName </p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">Last Name: </span> @Model.CustLastName </p>
+        </div>
+
+        <div class="col-12">
+            <p><span class="me-2">Address: </span>@Model.CustAddress </p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">Country: </span>@Model.CustCountry </p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">City: </span>@Model.CustCity </p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">Province: </span>@Model.CustProv </p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">Postal Code: </span>@Model.CustPostal </p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">Email: </span>@Model.CustEmail</p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">Bus Phone: </span>@Model.CustBusPhone </p>
+        </div>
+        <div class="col-12">
+            <p><span class="me-2">Home Phone: </span>@Model.CustHomePhone </p>
+        </div>
+</div>
+</div>
