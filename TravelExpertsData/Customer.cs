@@ -12,33 +12,46 @@ public partial class Customer
     [Key]
     public int CustomerId { get; set; }
 
-	[StringLength(20)]
-	public string? Username { get; set; }
+    [Required(ErrorMessage = "Please enter a user name.")]
+    [StringLength(30)]
+    public string Username { get; set; } = null!;
 
-	[StringLength(20)]
-	public string? Password { get; set; }
+    [Required(ErrorMessage = "Please enter a Password.")]
+    [StringLength(30)]
+    public string Password { get; set; } = null!;
 
-	[StringLength(25)]
+    [Required(ErrorMessage = "Please enter a first name.")]
+    [StringLength(25)]
     public string CustFirstName { get; set; } = null!;
 
+    [Required(ErrorMessage = "Please enter a last name.")]
     [StringLength(25)]
     public string CustLastName { get; set; } = null!;
 
+    [Required(ErrorMessage = "Please enter an address.")]
     [StringLength(75)]
     public string CustAddress { get; set; } = null!;
 
+    [Required(ErrorMessage = "Please enter a city.")]
     [StringLength(50)]
     public string CustCity { get; set; } = null!;
 
+    [Required(ErrorMessage = "Please enter a province in an 'AB' format.")]
     [StringLength(2)]
     public string CustProv { get; set; } = null!;
 
+
+    [Required(ErrorMessage = "Please enter a valid postal code.")]
+    [RegularExpression(@"^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ] ?\d[ABCEGHJKLMNPRSTVWXYZ]\d$",
+        ErrorMessage = "Invalid postal code format.")]
     [StringLength(7)]
     public string CustPostal { get; set; } = null!;
 
+    [Required(ErrorMessage = "Please enter a country.")]
     [StringLength(25)]
     public string? CustCountry { get; set; }
 
+    [Required(ErrorMessage = "Please enter a home phone number.")]
     [StringLength(20)]
     public string? CustHomePhone { get; set; }
 
