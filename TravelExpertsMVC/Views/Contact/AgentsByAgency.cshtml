@@ -42,10 +42,10 @@
                 @Html.DisplayFor(modelItem => item.AgtLastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AgtBusPhone)
+                    <a href="tel:@item.AgtBusPhone">@Html.DisplayFor(modelItem => item.AgtBusPhone)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AgtEmail)
+                    <a href="mailto:@item.AgtEmail">@Html.DisplayFor(modelItem => item.AgtEmail)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AgtPosition)
