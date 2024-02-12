@@ -1,0 +1,9 @@
+ALTER TABLE Customers
+ADD Username NVARCHAR(30) NOT NULL,
+    Password NVARCHAR(30) NOT NULL;
+
+UPDATE Customers
+SET Password = 'password';
+
+UPDATE Customers
+SET Username = LOWER(LEFT(CustFirstName, 1) + CustLastName);
