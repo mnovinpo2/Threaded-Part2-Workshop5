@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TravelExpertsData.Agent>
+
+@{
+    ViewData["Title"] = "AgentsByAgency";
+}
+
+<h1>Contact Us </h1>
+<form asp-action="AgentsByAgency" method="post">
+    <div class="row">
+        <select name="id" asp-items="@ViewBag.Agencies" onchange="this.form.submit()" class="form-select">
+        </select>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("First Name")
+            </th>
+            <th>
+                @Html.DisplayName("Last Name")
+            </th>
+            <th>
+                @Html.DisplayName("Phone Number")
+            </th>
+            <th>
+                @Html.DisplayName("Email")
+            </th>
+            <th>
+                @Html.DisplayName("Seniority")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgtFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgtLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgtBusPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgtEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgtPosition)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
