@@ -85,11 +85,11 @@ namespace TravelExpertsMVC.Controllers
 		/// <returns>Profile view with updated details</returns>
 		[Authorize]
         [HttpPost]
-        public ActionResult Edit(Customer cus)
+        public ActionResult Edit(Customer cus, int id)
         {
             try
             {
-                CustomerDB.UpdateCustomer(this.db, cus);
+                CustomerDB.UpdateCustomer(this.db, cus, id);
             }
             catch
             {

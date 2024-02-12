@@ -53,11 +53,27 @@ namespace TravelExpertsData
         /// </summary>
         /// <param name="db">database context</param>
         /// <param name="customer">customer entity to update</param>
-        public static void UpdateCustomer(TravelExpertsContext db, Customer customer)
+        public static void UpdateCustomer(TravelExpertsContext db, Customer customer, int id)
         {
+            Customer? c = FindByID(db, id);
             try
             {
-                db.Customers.Update(customer);
+                c.Username = customer.Username;
+                c.Password = customer.Password;
+
+                c.CustFirstName = customer.CustFirstName;
+                c.CustLastName = customer.CustLastName;
+
+                c.CustEmail = customer.CustEmail;
+                c.CustBusPhone = customer.CustBusPhone;
+                c.CustHomePhone = customer.CustHomePhone;
+
+                c.CustAddress = customer.CustAddress;
+                c.CustCity = customer.CustCity;
+                c.CustCountry = customer.CustCountry;
+                c.CustProv = customer.CustProv;
+                c.CustPostal = customer.CustPostal;
+
                 db.SaveChanges();
             }
             catch (DbUpdateException ex)
