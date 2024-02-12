@@ -4,4 +4,12 @@
 
 <div class="text-center">
     <h1 class="display-4">Travel Experts</h1>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form action="@Url.Action("Bookings", "TravelProduct")">
+            <button id="booking" type="submit" class="col-6 offset-3">Bookings</button>
+        </form>
+    }
+
 </div>

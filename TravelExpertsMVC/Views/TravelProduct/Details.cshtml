@@ -1,0 +1,192 @@
+﻿@model IEnumerable<TravelExpertsData.BookingDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    int price = 0;
+}
+
+<h1>Booking Detail</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            @*
+            Booking Detail
+            *@
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripEnd)
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.MovieId)
+            </td> *@
+                <td>
+                    @if (string.IsNullOrEmpty(item.Description))@*Does not work*@
+                    {
+                        <text>No description.</text>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Description)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+                <td>
+                    @if (item.RegionId == "AFR")
+                    {
+                        <text>Africa</text>
+                    }
+                    else if (item.RegionId == "ANZ")
+                    {
+                        <text>Australia & New Zealand</text>
+                    }
+                    else if (item.RegionId == "ASIA")
+                    {
+                        <text>Asia</text>
+                    }
+                    else if (item.RegionId == "EU")
+                    {
+                        <text>Europe & United Kingdom</text>
+                    }
+                    else if (item.RegionId == "MEAST")
+                    {
+                        <text>Middle East</text>
+                    }
+                    else if (item.RegionId == "MED")
+                    {
+                        <text>Mediterranean</text>
+                    }
+                    else if (item.RegionId == "NA")
+                    {
+                        <text>North America</text>
+                    }
+                    else if (item.RegionId == "OTHR")
+                    {
+                        <text>Other</text>
+                    }
+                    else if (item.RegionId == "SA")
+                    {
+                        <text>South America</text>
+                    }
+                    else if (item.RegionId == "SP")
+                    {
+                        <text>South Pacific</text>
+                    }
+                    else
+                    {
+                        <text>Unknown</text>
+                    }
+
+                </td>
+                <td>
+                    @if (item.ClassId == "BSN")
+                    {
+                        <text>Business Class</text>
+                    }
+                    else if (item.ClassId == "DBL")
+                    {
+                        <text>Double</text>
+                    }
+                    else if (item.ClassId == "DLX")
+                    {
+                        <text>Delux</text>
+                    }
+                    else if (item.ClassId == "ECN")
+                    {
+                        <text>Economy</text>
+                    }
+                    else if (item.ClassId == "FST")
+                    {
+                        <text>First Class</text>
+                    }
+                    else if (item.ClassId == "INT")
+                    {
+                        <text>Interior</text>
+                    }
+                    else if (item.ClassId == "NA")
+                    {
+                        <text>Not Applicable</text>
+                    }
+                    else if (item.ClassId == "OCNV")
+                    {
+                        <text>Ocean View</text>
+                    }
+                    else if (item.ClassId == "SNG")
+                    {
+                        <text>Single</text>
+                    }
+                    else
+                    {
+                        <text>Unknown</text>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripEnd)
+                </td>
+                <td>
+                    @if (item.FeeId == "BK")
+                    {
+                        price = 25;
+                    }
+                    else if (item.FeeId == "CH")
+                    {
+                        price += 15;
+                    }
+                    else if (item.FeeId == "GR")
+                    {
+                        price += 100;
+                    }
+                    else if (item.FeeId == "NC")
+                    {
+                        price += 0;
+                    }
+                    else if (item.FeeId == "NSF")
+                    {
+                        price += 25;
+                    }
+                    else if (item.FeeId == "RF")
+                    {
+                        price += 25;
+                    }
+                    else if (item.FeeId == "RS")
+                    {
+                        price += 50;
+                    }
+                    @((item.BasePrice.GetValueOrDefault() + item.AgencyCommission.GetValueOrDefault() + price).ToString("F2"))
+                    
+                </td>
+            </tr>
+        }
+        <form action="@Url.Action("Bookings", "TravelProduct")">
+            <button id="booking" type="submit" class="col-6 offset-3">Go Back.</button>
+        </form>
+    </tbody>
+</table>
