@@ -5,16 +5,12 @@
   
 }
 
-
-
-<h3 style="color: red;">You are about to remove this booking from your account. Please confirm your action. </h3>
-<div>
-    <hr />
-    
-
+<div class="text-center alert alert-danger" role="alert">
+    <h3 style="color: red;">You are about to remove this booking from your account. Please confirm your action. </h3>
+    <hr>
     <form asp-action="Delete">
         <input type="submit" value="Confirm" class="btn btn-danger" />
-        <input type="submit" asp-action="Bookings" value="Cancel" class="btn btn-primary" />
-           
+        <input type="submit" asp-action="Bookings" value="Cancel" class="btn btn-warning" />
     </form>
 </div>
+

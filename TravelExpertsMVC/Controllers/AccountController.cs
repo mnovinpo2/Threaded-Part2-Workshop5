@@ -75,6 +75,7 @@ namespace TravelExpertsMVC.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("CustomerId");
             HttpContext.Session.Clear();
+            TempData["Message"] = "Logged Out Successfully";
             return RedirectToAction("Index", "Home");
         }
 

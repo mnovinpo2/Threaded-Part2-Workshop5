@@ -65,7 +65,9 @@
         @if (TempData["Message"] != null)
         {
             <div class="alert @(TempData["IsError"] != null ? "alert-danger": "alert-success") alert-dismissible p-2 text-center">
-                <h5>@TempData["Message"]</h5>
+                <h5>
+                    @TempData["Message"]
+                </h5>
             </div>
         }
         <main role="main" class="pb-3">

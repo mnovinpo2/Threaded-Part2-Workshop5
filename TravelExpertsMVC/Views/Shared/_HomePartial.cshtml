@@ -1,13 +1,13 @@
 ﻿    
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around home-section">
         <h2 class="text-capitalize protest-riot-regular">Welcome Back @User.Identity.Name</h2>
         <form action="@Url.Action("Bookings", "TravelProduct")" class="">
-            <button id="booking" type="submit" class="text-bg-light btn px-4 py-1 Buttons">Your Bookings</button>
+            <a id="booking" type="submit" class="text-bg-light btn px-4 py-1 Buttons" asp-controller="TravelProduct" asp-action="Bookings">Your Bookings</a>
         </form>
     </div>
-    <section class="my-5">
+    <section class="my-5 home-section">
         <h2 class="text-center protest-riot-regular mb-5">Book A Package <span class=""><i class="fa-solid fa-plane"></i></span></h2>
         <div class="row fw-medium">
             <div class="col-md-6 col-sm-12">
@@ -34,7 +34,7 @@
 }
 else
 {
-    <div class="row fw-medium">
+    <div class="row fw-medium home-section">
         <div class="col-md-6 col-sm-12">
             <h2 class="text-start">Register <i class="fa-solid fa-check"></i></h2>
             <p>The First Step To Your Adventure Begins Here Sign Up Now!</p>
@@ -46,7 +46,7 @@ else
         </div>
     </div>
 
-    <section class="my-5">
+    <section class="my-5 home-section">
         <h2 class="text-center mb-5 protest-riot-regular">See What Some Of Our Traveleres Had to Say</h2>
         <div class="row">
             <div class="col-md-6 col-sm-12">
