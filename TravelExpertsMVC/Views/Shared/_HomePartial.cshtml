@@ -1,16 +1,42 @@
 ﻿    
 @if (User.Identity.IsAuthenticated)
 {
-    <h1>Authenitcated</h1>
-    <form action="@Url.Action("Bookings", "TravelProduct")">
-        <button id="booking" type="submit" class="col-6 offset-3">Bookings</button>
-    </form>
+    <div class="d-flex justify-content-around">
+        <h2 class="text-capitalize protest-riot-regular">Welcome Back @User.Identity.Name</h2>
+        <form action="@Url.Action("Bookings", "TravelProduct")" class="">
+            <button id="booking" type="submit" class="text-bg-light btn px-4 py-1 Buttons">Your Bookings</button>
+        </form>
+    </div>
+    <section class="my-5">
+        <h2 class="text-center protest-riot-regular mb-5">Book A Package <span class=""><i class="fa-solid fa-plane"></i></span></h2>
+        <div class="row fw-medium">
+            <div class="col-md-6 col-sm-12">
+                <h2 class="text-start">Polynesian Paradise</h2>
+                <p>How About a Polynesian Adventure</p>
+            </div>
+            <div class="home-register-img col-md-6 col-sm-12">
+                <img src="~/images/home-turtle.jpg" class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row fw-medium">
+            <div class="col-md-6 col-sm-12 mt-3">
+                <h2 class="text-start">European Vacation</h2>
+                <p>Or A Eurpoean Trip Of a LifeTime</p>
+            </div>
+            <div class="home-register-img col-md-6 col-sm-12">
+                <img src="~/images/european-image.jpg" class="img-fluid" />
+            </div>
+        </div>
+        <div class="text-center">
+            <a class="btn Buttons text-bg-light px-4 py-1 fw-medium my-3" asp-controller="TravelProduct" asp-action="BookPackage">Book Now!</a>
+        </div>
+    </section>
 }
 else
 {
     <div class="row fw-medium">
         <div class="col-md-6 col-sm-12">
-            <h2 class="text-start">Register</h2>
+            <h2 class="text-start">Register <i class="fa-solid fa-check"></i></h2>
             <p>The First Step To Your Adventure Begins Here Sign Up Now!</p>
             <a class="btn Buttons text-bg-light px-4 py-1 fw-medium mb-3" asp-controller="Account" asp-action="Register">Register</a>
             <a class="btn Buttons text-bg-light px-4 py-1 fw-medium mb-3" asp-controller="Account" asp-action="Login">Sign in</a>
