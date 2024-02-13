@@ -31,11 +31,11 @@
                         <li class="nav-item hover">
                             <a class="nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")"  asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-@*                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                        </li> *@
+                        <li class="nav-item hover">
+                            <a class="nav-link text-dark @(controller == "Home" && action == "About" ? "active" : "")"  asp-controller="Home" asp-action="About">Home</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="AgentsByAgency">Contact</a>
+                            <a class="nav-link text-dark @(controller == "Contact" && action == "AgentsByAgency" ? "active" : "")" asp-controller="Contact" asp-action="AgentsByAgency">Contact</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
