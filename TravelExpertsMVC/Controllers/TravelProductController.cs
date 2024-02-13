@@ -10,7 +10,7 @@ namespace TravelExpertsMVC.Controllers
     {
         private const string CharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         private TravelExpertsContext? db { get; set; }
-        // added constructor
+       
         public TravelProductController(TravelExpertsContext db)
         {
             this.db = db;
@@ -44,8 +44,33 @@ namespace TravelExpertsMVC.Controllers
             ViewBag.Price = BookingDetailDB.GetTotalPrice(db, customerId);
             return View(detail);
         }
-        
-       
+
+        // Get
+        public ActionResult Delete(int id)
+        {
+            //as for confirm to delete
+            
+            Booking? booking = BookingDB.GetBookingById(db!, id);
+            
+            return View(booking);
+        }
+
+        // Post
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, Booking booking)
+        {
+            try
+            {
+                BookingDB.DeleteBooking(db!, id);
+                return RedirectToAction("Bookings");
+            }
+            catch
+            {
+                return View(booking);
+            }
+        }
+
 
         public static string GenerateRandomString(int length)
         {
@@ -94,11 +119,7 @@ namespace TravelExpertsMVC.Controllers
         {
             try
             {
-                //newBooking.BookingDate = DateTime.Now;
-
-                //// Set CustomerId to the logged-in user's ID
-                //newBooking.CustomerId = HttpContext.Session.GetInt32("CustomerId");
-                // preserve select list content
+                
                 List<Package> packages = PackageDB.GetPackages(db!);
                 var list = new SelectList(packages, "PackageId", "PkgName").ToList();
                 ViewBag.Packages = list;

@@ -14,25 +14,35 @@
             Booking Detail
             *@
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Description @*Description*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Destination)
+                Destination @*Destination*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RegionId)
+                Region @*RegionId*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClassId)
+                Class @*ClassId *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TripStart)
+                Start of Trip @*TripStart*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TripEnd)
+                End of Trip @*TripEnd*@
             </th>
             <th>
-                Price
+                Base Price @*BasePrice*@
+            </th>
+            <th>
+                Agency Commision@*AgencyCommission*@
+            </th>
+            <th>
+                Fees @*FeeId*@
+            </th>
+
+            <th>
+                Total Price @*Total Price (BasePrice + AgencyCommission + Fees)*@
             </th>
         </tr>
     </thead>
@@ -152,37 +162,77 @@
                     @Html.DisplayFor(modelItem => item.TripEnd)
                 </td>
                 <td>
+                    <!--BasePrice-->
+                    $@Html.DisplayFor(modelItem => item.BasePrice)
+                </td>
+                <td>
+                    <!--Agency Commision-->
+                    $@Html.DisplayFor(modelItem => item.AgencyCommission)
+                </td>
+                <td>
+                    <!-- FeedId price-->
+                    @if (item.FeeId == "BK")
+                    {
+                        <text>$25</text>
+                    }
+                    else if (item.FeeId == "CH")
+                    {
+                        <text>$15</text>
+                    }
+                    else if (item.FeeId == "GR")
+                    {
+                        <text>$100</text>
+                    }
+                    else if (item.FeeId == "NC")
+                    {
+                        <text>$0</text>
+                    }
+                    else if (item.FeeId == "NSF")
+                    {
+                        <text>$25</text>
+                    }
+                    else if (item.FeeId == "RF")
+                    {
+                        <text>$25</text>
+                    }
+                    else if (item.FeeId == "RS")
+                    {
+                        <text>$50</text>
+                    }
+                </td>
+                <td>
                     @if (item.FeeId == "BK")
                     {
                         price = 25;
                     }
                     else if (item.FeeId == "CH")
                     {
-                        price += 15;
+                        price = 15;
                     }
                     else if (item.FeeId == "GR")
                     {
-                        price += 100;
+                        price = 100;
                     }
                     else if (item.FeeId == "NC")
                     {
-                        price += 0;
+                        price = 0;
                     }
                     else if (item.FeeId == "NSF")
                     {
-                        price += 25;
+                        price = 25;
                     }
                     else if (item.FeeId == "RF")
                     {
-                        price += 25;
+                        price = 25;
                     }
                     else if (item.FeeId == "RS")
                     {
-                        price += 50;
+                        price = 50;
                     }
-                    @((item.BasePrice.GetValueOrDefault() + item.AgencyCommission.GetValueOrDefault() + price).ToString("F2"))
+                    $@((item.BasePrice.GetValueOrDefault() + item.AgencyCommission.GetValueOrDefault() + price).ToString("F2"))
                     
                 </td>
+                
             </tr>
         }
         <form action="@Url.Action("Bookings", "TravelProduct")">
@@ -190,3 +240,4 @@
         </form>
     </tbody>
 </table>
+

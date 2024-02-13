@@ -1,0 +1,20 @@
+﻿@model TravelExpertsData.Booking
+
+@{
+    ViewData["Title"] = "Remove Booking";
+  
+}
+
+
+
+<h3 style="color: red;">You are about to remove this booking from your account. Please confirm your action. </h3>
+<div>
+    <hr />
+    
+
+    <form asp-action="Delete">
+        <input type="submit" value="Confirm" class="btn btn-danger" />
+        <input type="submit" asp-action="Bookings" value="Cancel" class="btn btn-primary" />
+           
+    </form>
+</div>

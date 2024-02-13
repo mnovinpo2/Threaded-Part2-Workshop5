@@ -36,55 +36,64 @@ namespace TravelExpertsData
         public static int GetTotalPrice(TravelExpertsContext db, int CustomerId)
         {
             int price = 0;
+            
             // customerId called before this
             List<Booking> bookings = db.Bookings.Where(b => b.CustomerId == CustomerId).OrderBy(b => b.BookingId).ToList();
             foreach (Booking booking in bookings)
             {
-
+                int tempPrice = 0;
+                double? AmtTraveler = booking.TravelerCount;
                 List<BookingDetail> bookingDetails = GetBookingDetail(db, booking.BookingId);
 
                 foreach (BookingDetail detail in bookingDetails)
                 {
+                    int TempPrice = 0;
                     if (detail.BasePrice != null)
                     {
-                        price += (int)detail.BasePrice;
+                        TempPrice += (int)detail.BasePrice;
                     }
                     if (detail.AgencyCommission != null)
                     {
-                        price += (int)detail.AgencyCommission;
+                        TempPrice += (int)detail.AgencyCommission;
                     }
                     if (detail.FeeId != null)
                     {
                         if (detail.FeeId == "BK")
                         {
-                            price += 25;
+                            TempPrice += 25;
                         }
                         else if (detail.FeeId == "CH")
                         {
-                            price += 15;
+                            TempPrice += 15;
                         }
                         else if (detail.FeeId == "GR")
                         {
-                            price += 100;
+                            TempPrice += 100;
                         }
                         else if (detail.FeeId == "NC")
                         {
-                            price += 0;
+                            TempPrice += 0;
                         }
                         else if (detail.FeeId == "NSF")
                         {
-                            price += 25;
+                            TempPrice += 25;
                         }
                         else if (detail.FeeId == "RF")
                         {
-                            price += 25;
+                            TempPrice += 25;
                         }
                         else if (detail.FeeId == "RS")
                         {
-                            price += 50;
+                            TempPrice += 50;
                         }
                     }
+                    tempPrice = TempPrice;
+                    
+
                 }
+
+
+                price += tempPrice * (int)AmtTraveler;
 
             }
 
@@ -108,6 +117,7 @@ namespace TravelExpertsData
             {
                 newFeeId = "BK";
             }
+            
             if (PackageId == 1)
             {
                 regionCodeId = "NA";

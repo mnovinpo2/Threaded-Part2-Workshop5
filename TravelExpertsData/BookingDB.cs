@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace TravelExpertsData
 {
@@ -20,13 +22,32 @@ namespace TravelExpertsData
             db.Bookings.Add(booking);
             db.SaveChanges();
         }
+      
+        public static void DeleteBooking(TravelExpertsContext db, int id)
+        {
+            int hi = 1;
+            Booking? booking = db.Bookings.Find(id);
+            BookingDetail? detail = db.BookingDetails.FirstOrDefault(b => b.BookingId == id);
+            if (booking != null)
+            {
+                db.Bookings.Remove(booking);
+                db.BookingDetails.Remove(detail); // remove details of the booking as well
+                db.SaveChanges(); 
+                
+                
+            }
+            
+        }
 
-        //public static int getBookingById(TravelExpertsContext db, int bookingid)
-        //{
-        //    int b = 1;
-        //    return b;
+        
 
-        //}
+
+        public static Booking? GetBookingById(TravelExpertsContext db, int id)
+        {
+            
+            Booking? booking = db.Bookings.Find(id);
+            return booking;
+        }
 
     }
 }
