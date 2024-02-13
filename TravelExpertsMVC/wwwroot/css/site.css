@@ -48,6 +48,7 @@ body {
     background-repeat: no-repeat;
     height: 30em;
 }
+
 .overlay {
     background-color: rgba(0, 0, 0, 0.3); 
 }

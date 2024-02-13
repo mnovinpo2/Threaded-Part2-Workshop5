@@ -41,15 +41,24 @@ namespace TravelExpertsMVC.Controllers
         /// </summary>
         /// <returns>Customer Details View</returns>
         [Authorize]
-        public ActionResult Profile()
+        public async Task<ActionResult> Profile()
         {
             Customer? cust = null!;
+          
             try
             {
                 int? id = HttpContext.Session.GetInt32("CustomerId")!;
 
-                if (id != null) // get id from session if not null
+                if (id != null)
+                {
                     cust = CustomerDB.FindByID(this.db, (int)id);
+                }
+                else
+                {
+                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                    HttpContext.Session.Remove("Customerid");
+                    return RedirectToAction("Login", "Account");
+                }
             }
             catch
             {
