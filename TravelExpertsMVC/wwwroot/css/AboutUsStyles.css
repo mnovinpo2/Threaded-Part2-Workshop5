@@ -43,7 +43,7 @@
         color: #333;
     }
 
-    .hero-content button {
+    .btn-about {
         display: inline-block;
         background-color: #ff4500;
         color: #fff;
@@ -55,7 +55,7 @@
         transition: 0.3s ease;
     }
 
-        .hero-content button:hover {
+        .btn-about:hover {
             background-color: #ff6347;
             transform: scale(1.1);
         }
