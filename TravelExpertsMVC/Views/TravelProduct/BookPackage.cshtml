@@ -1,0 +1,95 @@
+﻿@model TravelExpertsData.Booking
+
+@{
+    ViewData["Title"] = "Book Package";
+    
+}
+<div class="container">
+    <h1>Book Package</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="BookPackage" method="post">
+                <input type="hidden" asp-for="BookingDate" value="@ViewBag.BookingDate" />
+                <input type="hidden" asp-for="CustomerId" value="@ViewBag.CustomerId" />
+                <input type="hidden" asp-for="BookingNo" value="@ViewBag.RandomGen" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="PackageId" class="control-label">Package</label>
+                    <select asp-for="PackageId" asp-items="@ViewBag.Packages" class="form-control"></select>
+                    <span asp-validation-for="PackageId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TravelerCount" class="control-label">Amount of Traveller</label>
+                    <select asp-for="TravelerCount" class="form-control">
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    <span asp-validation-for="TravelerCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TripTypeId" class="control-label">Trip Type</label>
+                    <select asp-for="TripTypeId" class="form-control">
+                        <option value="B">Business</option>
+                        <option value="G">Group</option>
+                        <option value="L">Leisure</option>
+                    </select>
+                    <span asp-validation-for="TripTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Book Package" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-md-8">
+            <!-- Display package information here -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Package</th>
+                        <th>Destination</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Agency Commission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Caribbean New Year</td>
+                        <td>Caribbean Islands</td>
+                        <td>Cruise the Caribbean & Celebrate the New Year.</td>
+                        <td>$4800</td>
+                        <td>$400</td>
+                    </tr>
+                    <tr>
+                        <td>Polynesian Paradise</td>
+                        <td>Polynesian Islands</td>
+                        <td>8 Day All Inclusive Hawaiian Vacation</td>
+                        <td>$3000</td>
+                        <td>$310</td>
+                    </tr>
+                    <tr>
+                        <td>Asian Expedition</td>
+                        <td>Thailand, Korea, Japan</td>
+                        <td>Airfare, Hotel, and Eco Tour.</td>
+                        <td>$2800</td>
+                        <td>$300</td>
+                    </tr>
+                    <tr>
+                        <td>European Vacation</td>
+                        <td>France, Italy, Spain</td>
+                        <td>Euro Tour with Rail Pass and Travel Insurance.</td>
+                        <td>$3000</td>
+                        <td>$280</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

@@ -15,11 +15,17 @@ namespace TravelExpertsData
             return booking;
         }
 
+        public static void AddBooking(TravelExpertsContext db, Booking booking)
+        {
+            db.Bookings.Add(booking);
+            db.SaveChanges();
+        }
+
         //public static int getBookingById(TravelExpertsContext db, int bookingid)
         //{
         //    int b = 1;
         //    return b;
-            
+
         //}
 
     }

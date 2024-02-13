@@ -24,6 +24,9 @@
                 @Html.DisplayNameFor(model => model.BookingDate)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.PackageId)
+            </th>
+            <th>
                 Details
             </th>
         </tr>
@@ -56,6 +59,33 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.BookingDate)
                     @* @Html.DisplayFor(modelItem => item.BookingDate.Value.ToShortDateString()) *@
+                </td>
+                <td>
+                    @if (item.PackageId == null)
+                    {
+                        <text>No Package.</text>
+                    }
+                    else
+                    {
+                        @if (item.PackageId == 1)
+                        {
+                            <text>Carribbean New Year</text>
+                        }
+                        else if (item.PackageId == 2)
+                        {
+                            <text>Polynesian Paradise</text>
+                        }
+                        else if (item.PackageId == 3)
+                        {
+                            <text>Asian Expedition</text>
+                        }
+                        else if (item.PackageId == 4)
+                        {
+                            <text>European Vacation</text>
+                        }
+                    }
+                    
+
                 </td>
                 <td>
                     <form action="@Url.Action("Details", "TravelProduct")" method="post">
