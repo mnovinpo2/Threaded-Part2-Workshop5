@@ -1,0 +1,13 @@
+﻿    
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Authenitcated</h1>
+    <form action="@Url.Action("Bookings", "TravelProduct")">
+        <button id="booking" type="submit" class="col-6 offset-3">Bookings</button>
+    </form>
+}
+else
+{
+    <h1>Register</h1>
+}
+
