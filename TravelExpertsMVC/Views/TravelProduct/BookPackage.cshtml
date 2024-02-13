@@ -4,6 +4,21 @@
     ViewData["Title"] = "Book Package";
     
 }
+<style>
+    .price-container {
+        display: flex; /* Use flexbox layout */
+        align-items: center; /* Align items vertically center */
+    }
+
+    .price {
+        font-size: 18px; /* Adjust font size as needed */
+        margin-right: 5px; /* Add some space between Price and Per Person */
+    }
+
+    .per-person {
+        font-size: 10px; /* Adjust font size as needed */
+    }
+</style>
 <div class="container">
     <h1>Book Package</h1>
     <hr />
@@ -52,8 +67,26 @@
                         <th>Package</th>
                         <th>Destination</th>
                         <th>Description</th>
-                        <th>Price</th>
-                        <th>Agency Commission</th>
+                        <th>
+                            <div class="price-container">
+                                <div class="price">
+                                    Price
+                                </div>
+                                <div class="per-person">
+                                    * Per Person
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="price-container">
+                                <div class="price">
+                                    Agency Commission
+                                </div>
+                                <div class="per-person">
+                                    * Per Person
+                                </div>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,6 +118,7 @@
                         <td>$3000</td>
                         <td>$280</td>
                     </tr>
+                   
                 </tbody>
             </table>
         </div>
