@@ -63,10 +63,13 @@ namespace TravelExpertsMVC.Controllers
             try
             {
                 BookingDB.DeleteBooking(db!, id);
+                TempData["Message"] = "Deleted Successfully";
                 return RedirectToAction("Bookings");
             }
             catch
             {
+                TempData["Message"] = "Error During Delete, Please Try Again!";
+                TempData["IsError"] = true;
                 return View(booking);
             }
         }
@@ -128,15 +131,21 @@ namespace TravelExpertsMVC.Controllers
                 {
                     BookingDB.AddBooking(db!, newBooking);
                     BookingDetailDB.AddDetails(db!, newBooking.PackageId, newBooking.BookingId);
+
+                    TempData["Message"] = $"Successfully Booked {newBooking.Package!.PkgName}";
                     return RedirectToAction("Bookings"); 
                 }
                 else
                 {
+                    TempData["Message"] = "Error Booking Package, Please Try Again!";
+                    TempData["IsError"] = true;
                     return View(newBooking);
                 }
             }
             catch
             {
+                TempData["Message"] = "Error During Delete, Please Try Again!";
+                TempData["IsError"] = true;
                 return View(newBooking);
             }
         }

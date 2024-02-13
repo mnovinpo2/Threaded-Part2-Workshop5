@@ -99,9 +99,12 @@ namespace TravelExpertsMVC.Controllers
             try
             {
                 CustomerDB.UpdateCustomer(this.db, cus, id);
+                TempData["Message"] = $"Successfully Updated {cus.Username}";
             }
             catch
             {
+                TempData["Message"] = "Error Updating Info, Try Again Later!";
+                TempData["IsError"] = true;
                 return View();
             }
             return View("Profile",cus);

@@ -35,6 +35,8 @@ namespace TravelExpertsMVC.Controllers
                 if (cst == null)
                 {
                     ModelState.AddModelError("", "Invalid username or password");
+                    TempData["Message"] = "Error, Incorrect Username or Password. Please Try Again.";
+                    TempData["IsError"] = true;
                     return View();
                 }
 
@@ -54,11 +56,15 @@ namespace TravelExpertsMVC.Controllers
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
 
+                TempData["Message"] = $"Logged in Successfully, hello {cst.Username}";
+
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception)
             {
                 ModelState.AddModelError("", "An error occurred during authentication.");
+                TempData["Message"] = "Error Logging in, Please Try Again";
+                TempData["IsError"] = true;
                 return View();
             }
         }
@@ -85,10 +91,13 @@ namespace TravelExpertsMVC.Controllers
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
+                TempData["Message"] = $"Thank You For Registering {customer.CustFirstName}, Please Sign In";
                 return Redirect("Login");
             }
             catch (Exception)
             {
+                TempData["Message"] = "Error Registering, Please Try Again";
+                TempData["IsError"] = true;
                 return RedirectToAction("Index", "Home");
             }
         }
