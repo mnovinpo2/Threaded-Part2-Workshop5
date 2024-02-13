@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace TravelExpertsData
 {
     public class BookingDetailDB
     {
+        private const string NumSet = "0123456789";
         public static List<Customer> GetCustomers(TravelExpertsContext db) // dependency injection
         {
             List<Customer> list = db.Customers.ToList();
@@ -101,6 +103,7 @@ namespace TravelExpertsData
         }
         public static void AddDetails(TravelExpertsContext db, int? PackageId, int newbookingId)
         {
+            int num = GenerateRandom(3);
             string destination = "";
             string regionCodeId = "";
             decimal basePrice = 0m;
@@ -163,7 +166,7 @@ namespace TravelExpertsData
                 BasePrice = basePrice,
                 AgencyCommission = agencyComm,
                 FeeId = newFeeId,
-                ItineraryNo = 123,
+                ItineraryNo = num,
                 ProductSupplierId = prodsup,
             };
 
@@ -172,6 +175,19 @@ namespace TravelExpertsData
             
         }
 
+        public static int GenerateRandom(int length)
+        {
+            Random random = new Random();
+            StringBuilder stringBuilder = new StringBuilder();
 
+            for (int i = 0; i < length; i++)
+            {
+                int index = random.Next(NumSet.Length);
+                stringBuilder.Append(NumSet[index]);
+            }
+            //bool CheckIfNumberExistsInDatabase(123); check if it theres duplicates
+            int a = Convert.ToInt32(stringBuilder);
+            return a;
+        }
     }
 }
