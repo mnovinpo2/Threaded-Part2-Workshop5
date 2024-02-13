@@ -2,21 +2,17 @@
 @{
     ViewData["Title"] = "Login";
 }
-<form asp-action="Login" method="post">
-    <h3>Login</h3>
-    <table class="table">
-        <tr>
-            <td>Username: </td>
-            <td><input type="text" asp-for="Username" /></td>
-        </tr>
-        <tr>
-            <td>Password: </td>
-            <td><input type="text" asp-for="Password" /></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Authenticate" class="btn btn-primary" />
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="row justify-content-center align-items-center fw-medium mt-5">
+    <form asp-action="Login" method="post" class="col-md-4">
+        <h3 class="display-6 text-center mb-3">Login</h3>
+          <div class="mb-3">
+            <label class="form-label">Username: </label>
+            <input type="text" asp-for="Username" class="form-control"/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password: </label>
+            <input type="text" asp-for="Password" class="form-control" />
+          </div>
+          <input type="submit" value="Authenticate" class="btn btn-primary" />
+    </form>
+</div>

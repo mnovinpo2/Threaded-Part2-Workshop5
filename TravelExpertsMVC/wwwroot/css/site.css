@@ -7,6 +7,27 @@ html {
     font-size: 16px;
   }
 }
+.nav-bg {
+    background: #c0c0aa; 
+    background: -webkit-linear-gradient(to right, #1cefff, #c0c0aa); 
+    background: linear-gradient(to right, #1cefff, #c0c0aa); 
+}
+.kaushan-script-regular {
+    font-family: "Kaushan Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+.active {
+    font-weight: bolder;
+    text-decoration: underline 0.2em;
+    text-underline-offset: 0.3em;
+    color: #f57242 !important;
+}
+.hover:hover {
+    font-weight: bolder;
+    text-decoration: underline 0.2em #f57242;
+    text-underline-offset: 0.3em;
+}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -20,6 +41,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.jumbo {
+    background-image: url('../images/splash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30em;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.3); 
+}
+
 .profile-edit a{
     text-decoration: none;
     color: black;
@@ -27,3 +59,4 @@ body {
 .profile-edit a:hover{
     text-decoration: underline;
 }
+
