@@ -7,12 +7,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @RenderSection("AboutUsStyles", required: false)
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TravelExperts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Kaushan+Script&family=Noto+Sans+Multani&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&family=Protest+Strike&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TravelExpertsMVC.styles.css" asp-append-version="true" />
@@ -39,11 +43,16 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TravelProduct" asp-action="Bookings">Bookings</a>
+                            <li class="nav-item hover">
+                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Profile" title="Welcome">
+                                    Profile
+                                </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TravelProduct" asp-action="BookPackage">Book Package</a>
+                            <li class="nav-item hover">
+                                <a class="nav-link text-dark @(controller == "TravelProduct" && action == "Bookings" ? "active" : "")" asp-controller="TravelProduct" asp-action="Bookings">Bookings</a>
+                            </li>
+                            <li class="nav-item hover">
+                                <a class="nav-link text-dark @(controller == "TravelProduct" && action == "BookPackage" ? "active" : "")" asp-controller="TravelProduct" asp-action="BookPackage">Book Package</a>
                             </li>
                         }
                     </ul>
@@ -60,7 +69,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - TravelExpertsMVC - <a asp-area="" asp-controller="Contact" asp-action="AgentsByAgency">Contact</a>
+            &copy; 2024 - TravelExperts - <a asp-area="" asp-controller="Contact" asp-action="AgentsByAgency">Contact</a>
         </div>
     </footer>
     <script src="https://kit.fontawesome.com/5d36e2f921.js" crossorigin="anonymous"></script>

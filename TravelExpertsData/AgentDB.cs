@@ -13,7 +13,7 @@ namespace TravelExpertsData
     {
         public static List<Agent> GetAllAgents(TravelExpertsContext db) 
         {
-            List<Agent> agents = db.Agents.ToList();
+            List<Agent> agents = db.Agents.OrderBy(a => a.AgtFirstName).ThenBy(a => a.AgtLastName).ToList();
             return agents;
         }
 
@@ -25,7 +25,7 @@ namespace TravelExpertsData
 
         public static List<Agent> GetAgentsByAngecy(TravelExpertsContext db, int id) 
         {
-            List<Agent> agents = db.Agents.Where(a => a.AgencyId == id).ToList();
+            List<Agent> agents = db.Agents.Where(a => a.AgencyId == id).OrderBy(a => a.AgtFirstName).ThenBy(a => a.AgtLastName).ToList();
             return agents;
         }
     }
