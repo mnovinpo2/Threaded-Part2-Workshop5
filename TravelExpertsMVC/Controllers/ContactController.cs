@@ -39,6 +39,7 @@ namespace TravelExpertsMVC.Controllers
             List<Agency> agencies = AgentDB.GetAgencies(db);
             var list = new SelectList(agencies, "AgencyId", "AgncyCity").ToList(); 
             list.Insert(0, new SelectListItem("All", "All"));
+            ViewBag.Agencies = list;
 
             foreach (var item in list) 
             {
