@@ -4,16 +4,17 @@
     ViewData["Title"] = "AgentsByAgency";
 }
 
-<h1>Contact Us </h1>
-<form asp-action="AgentsByAgency" method="post">
-    <div class="row">
-        <select name="id" asp-items="@ViewBag.Agencies" onchange="this.form.submit()" class="form-select">
+<h1 class="my-5 protest-riot-regular">Contact Us </h1>
+<form asp-action="AgentsByAgency" method="post" class="mb-3">
+    <div class="w-50">
+        <label class="form-label">Locations</label>
+        <select name="id" asp-items="@ViewBag.Agencies" onchange="this.form.submit()" class="form-select ">
         </select>
     </div>
 </form>
-<table class="table">
+<table class="table table-responsive table-striped table-hover table-sm">
     <thead>
-        <tr>
+        <tr class="table-primary">
             <th>
                 @Html.DisplayName("First Name")
             </th>
@@ -29,12 +30,11 @@
             <th>
                 @Html.DisplayName("Seniority")
             </th>
-            <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
 @foreach (var item in Model) {
-        <tr>
+            <tr class="">
             <td>
                 @Html.DisplayFor(modelItem => item.AgtFirstName)
             </td>

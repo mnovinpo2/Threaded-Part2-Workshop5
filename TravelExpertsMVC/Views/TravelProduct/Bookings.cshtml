@@ -6,7 +6,7 @@
     string formattedPrice = Price.ToString("C");
 }
 
-<h1>My Bookings</h1>
+<h1 class="mt-5 protest-riot-regular">My Bookings</h1>
 
 <table class="table">
     <thead>
@@ -89,14 +89,14 @@
                     }
                     
                 </td>
-                <td> <!--Button needs hoverable-->
+                <td> 
                     <form action="@Url.Action("Details", "TravelProduct")" method="post">
                         <input type="hidden" name="BookingId" value="@item.BookingId">
-                        <button type="submit">Details</button>
+                        <button type="submit" class="btn btn-primary pkg-button">Details</button>
                     </form>
                 </td>
                 <td>
-                    <button onclick="location.href='@Url.Action("Delete", new { id = item.BookingId })'" >
+                    <button onclick="location.href='@Url.Action("Delete", new { id = item.BookingId })'" class="btn btn-danger pkg-button">
                         Remove Booking
                     </button>
                 </td>

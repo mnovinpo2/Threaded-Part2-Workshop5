@@ -20,21 +20,22 @@
     }
 </style>
 <div class="container">
-    <h1>Book Package</h1>
+    <h1 class="mt-5 protest-riot-regular">Book Package</h1>
     <hr />
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
+            <p></p>
             <form asp-action="BookPackage" method="post">
                 <input type="hidden" asp-for="BookingDate" value="@ViewBag.BookingDate" />
                 <input type="hidden" asp-for="CustomerId" value="@ViewBag.CustomerId" />
                 <input type="hidden" asp-for="BookingNo" value="@ViewBag.RandomGen" />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label asp-for="PackageId" class="control-label">Package</label>
                     <select asp-for="PackageId" asp-items="@ViewBag.Packages" class="form-control"></select>
                     <span asp-validation-for="PackageId" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label asp-for="TravelerCount" class="control-label">Number of Travellers</label>
                     <select asp-for="TravelerCount" class="form-control">
                         @for (int i = 1; i <= 12; i++)
@@ -44,7 +45,7 @@
                     </select>
                     <span asp-validation-for="TravelerCount" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label asp-for="TripTypeId" class="control-label">Trip Type</label>
                     <select asp-for="TripTypeId" class="form-control">
                         <option value="B">Business</option>
@@ -53,17 +54,18 @@
                     </select>
                     <span asp-validation-for="TripTypeId" class="text-danger"></span>
                 </div>
-                <div class="form-group mt-3">
-                    <input type="submit" value="Book Package" class="btn btn-primary" />
+                <div class="form-group">
+                    <input type="submit" value="Book Package" class="btn btn-primary pkg-button" />
                 </div>
             </form>
         </div>
         
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-12">
             <!-- Display package information here -->
-            <table class="table">
+            <table class="table table-responsive table-striped table-hover table-sm caption-top">
+                <caption>*All Prices are Per Person</caption>
                 <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>Package</th>
                         <th>Destination</th>
                         <th>Description</th>
@@ -72,24 +74,18 @@
                                 <div class="price">
                                     Price
                                 </div>
-                                <div class="per-person">
-                                    * Per Person
-                                </div>
                             </div>
                         </th>
                         <th>
                             <div class="price-container">
                                 <div class="price">
-                                    Agency Commission
-                                </div>
-                                <div class="per-person">
-                                    * Per Person
+                                    Commission
                                 </div>
                             </div>
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     <tr>
                         <td>Caribbean New Year</td>
                         <td>Caribbean Islands</td>
@@ -118,7 +114,6 @@
                         <td>$3000</td>
                         <td>$280</td>
                     </tr>
-                   
                 </tbody>
             </table>
         </div>

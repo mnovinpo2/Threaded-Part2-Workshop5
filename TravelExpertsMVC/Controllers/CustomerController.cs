@@ -20,21 +20,7 @@ namespace TravelExpertsMVC.Controllers
         {
             this.db = db;
         }
-        // GET: CustomerController
-        public ActionResult Register(Customer customer)
-        {
-            try
-            {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return Redirect("Login");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("error", ex.Message);
-                return Redirect("/");
-            }
-        }
+  
         /// <summary>
         /// Controller for Customer Profile 
         /// Written By Mustafa 

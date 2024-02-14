@@ -30,9 +30,9 @@ html {
     text-underline-offset: 0.3em;
 }
 .Buttons {
-    background: #ffe259; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ffa751, #ffe259); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffa751, #ffe259); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #ffe259; 
+    background: -webkit-linear-gradient(to right, #ffa751, #ffe259); 
+    background: linear-gradient(to right, #ffa751, #ffe259); 
 }
 .protest-riot-regular {
     font-family: "Protest Riot", sans-serif;
@@ -67,13 +67,26 @@ body {
     background-color: rgba(0, 0, 0, 0.3); 
 }
 
-.profile-edit a{
+.home-section a:hover {
+    background: #c0c0aa;
+    background: -webkit-linear-gradient(to right, #1cefff, #c0c0aa);
+    background: linear-gradient(to right, #1cefff, #c0c0aa);
+}
+.pkg-button:hover {
+    background: #ffe259;
+    background: -webkit-linear-gradient(to right, #ffa751, #ffe259);
+    background: linear-gradient(to right, #ffa751, #ffe259);
+    color: black;
+}
+
+.profile-edit a {
     text-decoration: none;
     color: black;
 }
 .profile-edit a:hover{
     text-decoration: underline;
 }
+
 .btn-about {
     display: inline-block;
     background-color: #ff4500;
@@ -85,10 +98,7 @@ body {
     cursor: pointer;
     transition: 0.3s ease;
 }
-
 .btn-about:hover {
     background-color: #ff6347;
     transform: scale(1.1);
 }
-    
-
