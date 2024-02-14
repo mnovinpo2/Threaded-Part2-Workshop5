@@ -31,7 +31,11 @@ namespace TravelExpertsData
             if (booking != null)
             {
                 db.Bookings.Remove(booking);
-                db.BookingDetails.Remove(detail); // booking is a fk for bookingedetails, so need to delete details as well
+
+                if (detail != null)
+                {
+                    db.BookingDetails.Remove(detail); // booking is a fk for bookingedetails, so need to delete details as well
+                }
                 db.SaveChanges(); 
                 
             }

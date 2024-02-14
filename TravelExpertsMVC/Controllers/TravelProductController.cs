@@ -16,6 +16,7 @@ namespace TravelExpertsMVC.Controllers
             this.db = db;
         }
 
+       
         public IActionResult Bookings()
         {
             ViewBag.RandomGen = GenerateRandomString(7);
