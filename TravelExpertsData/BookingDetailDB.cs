@@ -103,7 +103,7 @@ namespace TravelExpertsData
         }
         public static void AddDetails(TravelExpertsContext db, int? PackageId, int newbookingId)
         {
-            int num = GenerateRandom(3);
+            //int num = GenerateRandom(3);
             string destination = "";
             string regionCodeId = "";
             decimal basePrice = 0m;
@@ -166,7 +166,7 @@ namespace TravelExpertsData
                 BasePrice = basePrice,
                 AgencyCommission = agencyComm,
                 FeeId = newFeeId,
-                ItineraryNo = num,
+                ItineraryNo = 123,
                 ProductSupplierId = prodsup,
             };
 
