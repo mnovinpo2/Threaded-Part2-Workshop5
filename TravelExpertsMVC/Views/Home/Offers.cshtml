@@ -2,32 +2,40 @@
 @{
     ViewData["Title"] = "Offers";
 }
+<h1 class="protest-riot-regular text-center my-5">Your Adventure Starts Here</h1>
 
-<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-    <li class="nav-item hover" role="presentation">
-        <button class="nav-link active" id="polynesia-tab" data-bs-toggle="tab" data-bs-target="#polynesia" type="button" role="tab" aria-controls="poly-tab-pane" aria-selected="true">Polynesia</button>
-    </li>
-    <li class="nav-item hover" role="presentation">
-        <button class="nav-link" id="expedition-tab" data-bs-toggle="tab" data-bs-target="#expedition" type="button" role="tab" aria-controls="exp-tab-pane" aria-selected="false">Asia</button>
-    </li>
-    <li class="nav-item hover" role="presentation">
-        <button class="nav-link" id="euro-tab" data-bs-toggle="tab" data-bs-target="#euro" type="button" role="tab" aria-controls="euro-tab-pane" aria-selected="false">Europe</button>
-    </li>
-    <li class="nav-item hover" role="presentation">
-        <button class="nav-link" id="car-tab" data-bs-toggle="tab" data-bs-target="#car" type="button" role="tab" aria-controls="car-tab-pane" aria-selected="false">Carribean</button>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="polynesia" role="tabpanel" aria-labelledby="poly-tab" tabindex="0">
-        <partial name="_PolyPartial" />
+<section>
+    <h5 class="text-center">Browse Our Packages</h5>
+    <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist">
+        <li class="nav-item hover" role="presentation">
+            <button class="nav-link active" id="polynesia-tab" data-bs-toggle="tab" data-bs-target="#polynesia" type="button" role="tab" aria-controls="poly-tab-pane" aria-selected="true">Polynesia</button>
+        </li>
+        <li class="nav-item hover" role="presentation">
+            <button class="nav-link" id="expedition-tab" data-bs-toggle="tab" data-bs-target="#expedition" type="button" role="tab" aria-controls="exp-tab-pane" aria-selected="false">Asia</button>
+        </li>
+        <li class="nav-item hover" role="presentation">
+            <button class="nav-link" id="euro-tab" data-bs-toggle="tab" data-bs-target="#euro" type="button" role="tab" aria-controls="euro-tab-pane" aria-selected="false">Europe</button>
+        </li>
+        <li class="nav-item hover" role="presentation">
+            <button class="nav-link" id="car-tab" data-bs-toggle="tab" data-bs-target="#car" type="button" role="tab" aria-controls="car-tab-pane" aria-selected="false">Carribean</button>
+        </li>
+    </ul>
+    <div class="tab-content mb-3 " id="myTabContent">
+        <div class="tab-pane fade show active text-decoration-none" id="polynesia" role="tabpanel" aria-labelledby="poly-tab" tabindex="0">
+            <partial name="_PolyPartial" />
+        </div>
+        <div class="tab-pane fade text-decoration-none" id="expedition" role="tabpanel" aria-labelledby="exp-tab" tabindex="0">
+            <partial name="_AsiaPartial" />
+        </div>
+        <div class="tab-pane fade text-decoration-none" id="euro" role="tabpanel" aria-labelledby="euro-tab" tabindex="0">
+            <partial name="_EuroPartial" />
+        </div>
+        <div class="tab-pane fade text-decoration-none" id="car" role="tabpanel" aria-labelledby="car-tab" tabindex="0">
+            <partial name="_CarrPartial" />
+        </div>
     </div>
-    <div class="tab-pane fade" id="expedition" role="tabpanel" aria-labelledby="exp-tab" tabindex="0">
-        <partial name="_AsiaPartial" />
+    <div class="text-center">
+        <a class="btn Buttons text-bg-light px-4 py-1 fw-medium my-3" asp-controller="TravelProduct" asp-action="BookPackage">Book Now!</a>
     </div>
-    <div class="tab-pane fade" id="euro" role="tabpanel" aria-labelledby="euro-tab" tabindex="0">
-        <partial name="_EuroPartial" />
-    </div>
-    <div class="tab-pane fade" id="car" role="tabpanel" aria-labelledby="car-tab" tabindex="0">
-        <partial name="_CarrPartial" />
-    </div>
-</div>
+</section>
+ 
