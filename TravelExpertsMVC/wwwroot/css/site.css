@@ -72,7 +72,7 @@ body {
     background: -webkit-linear-gradient(to right, #1cefff, #c0c0aa);
     background: linear-gradient(to right, #1cefff, #c0c0aa);
 }
-.pkg-button:hover {
+.pkg-button:hover, .offer-btn:hover {
     background: #ffe259;
     background: -webkit-linear-gradient(to right, #ffa751, #ffe259);
     background: linear-gradient(to right, #ffa751, #ffe259);
