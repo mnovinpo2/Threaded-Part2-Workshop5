@@ -98,7 +98,7 @@ namespace TravelExpertsMVC.Controllers
         // GET Package
         public ActionResult BookPackage()
         {
-            ViewBag.RandomGen = GenerateRandomString(7);
+            ViewBag.RandomGen = GenerateRandomString(5);
             var customerIdClaim = User.FindFirst("CustomerId");
             if (customerIdClaim == null || !int.TryParse(customerIdClaim.Value, out int customerId))
             {
