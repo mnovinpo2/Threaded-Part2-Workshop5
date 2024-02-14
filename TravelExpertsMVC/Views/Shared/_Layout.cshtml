@@ -23,14 +23,14 @@
 </head>
 <body>
     <header>
-        <nav class="nav-bg navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 fw-medium">
+        <nav class="nav-bg navbar navbar-expand-md navbar-toggleable-md border-bottom box-shadow mb-3 fw-medium">
             <div class="container">
-                <a class="navbar-brand hover kaushan-script-regular" asp-area="" asp-controller="Home" asp-action="Index">TravelExperts</a>
+                <a class="navbar-brand hover kaushan-script-regular" asp-controller="Home" asp-action="Index">TravelExperts</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse x justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item hover">
                             <a class="nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")"  asp-controller="Home" asp-action="Index">Home</a>
@@ -64,9 +64,22 @@
     <div class="container">
         @if (TempData["Message"] != null)
         {
-            <div class="alert @(TempData["IsError"] != null ? "alert-danger": "alert-success") alert-dismissible p-2 text-center">
-                <h5>
+            <div class="alert text-capitalize @(TempData["IsError"] != null ? "alert-danger": "nav-bg") alert-dismissible p-2 text-center">
+                <h5 class="text-dark-emphasis">
                     @TempData["Message"]
+                    @if (TempData["IsError"] == null)
+                    {
+                        <span>
+                            <i class="fa-regular fa-face-smile"></i>
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            <i class="fa-solid fa-ban"></i>
+                        </span>
+                    }
+
                 </h5>
             </div>
         }
