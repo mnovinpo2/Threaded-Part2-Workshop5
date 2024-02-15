@@ -106,7 +106,12 @@
                         <td>8 Day All Inclusive Hawaiian Vacation</td>
                         <td>$3000</td>
                         <td>$310</td>
-                       
+                        <td>
+                            <form action="@Url.Action("PackageDetails", "TravelProduct")" method="post">
+                                <input type="hidden" name="packageNo" value="2">
+                                <button type="submit" class="btn btn-primary pkg-button">Details</button>
+                            </form>
+                        </td>
                     </tr>
                     <tr>
                         <td>Asian Expedition</td>
@@ -114,7 +119,12 @@
                         <td>Airfare, Hotel, and Eco Tour.</td>
                         <td>$2800</td>
                         <td>$300</td>
-                        
+                        <td>
+                            <form action="@Url.Action("PackageDetails", "TravelProduct")" method="post">
+                                <input type="hidden" name="packageNo" value="3">
+                                <button type="submit" class="btn btn-primary pkg-button">Details</button>
+                            </form>
+                        </td>
                     </tr>
                     <tr>
                         <td>European Vacation</td>
@@ -122,7 +132,12 @@
                         <td>Euro Tour with Rail Pass and Travel Insurance.</td>
                         <td>$3000</td>
                         <td>$280</td>
-                        
+                        <td>
+                            <form action="@Url.Action("PackageDetails", "TravelProduct")" method="post">
+                                <input type="hidden" name="packageNo" value="4">
+                                <button type="submit" class="btn btn-primary pkg-button">Details</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>
