@@ -102,4 +102,6 @@ body {
     background-color: #ff6347;
     transform: scale(1.1);
 }
-
+.delete-container {
+    border: 0.3em solid black;
+}

@@ -8,8 +8,8 @@
 
 <h1 class="mt-5 protest-riot-regular">My Bookings</h1>
 
-<table class="table">
-    <thead>
+<table class="table table-responsive table-striped table-hover table-sm">
+    <thead clas="table-primary">
         <tr>
             <th>
                 Booking No @*BookingNo*@
@@ -97,14 +97,14 @@
                 </td>
                 <td>
                     <button onclick="location.href='@Url.Action("Delete", new { id = item.BookingId })'" class="btn btn-danger pkg-button">
-                        Remove Booking
+                        Remove
                     </button>
                 </td>
                
                 
             </tr>
         }
-        <div>
+        <div class="fw-bolder fst-italic">
             Total Price: @formattedPrice
         </div>
         
