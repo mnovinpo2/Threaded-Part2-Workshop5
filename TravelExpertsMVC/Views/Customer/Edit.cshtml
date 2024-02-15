@@ -5,8 +5,11 @@
 }
 
 <div class="text-center">
-	<h1 class="display-6 my-5">Editing @Model.Username</h1>
-
+	@if (User.Identity.IsAuthenticated)
+	{
+		var firstName = User.Claims.FirstOrDefault(c => c.Type == "FirstName")?.Value; 
+		<h1 class="display-6 my-5 text-capitalize">Editing @firstName</h1>
+	}
 	<div class="row justify-content-center">
 		<div class="col-md-4">
 			<form asp-action="Edit">
@@ -72,7 +75,7 @@
 					<span asp-validation-for="CustEmail" class="text-danger"></span>
 				</div>
 				<div class="form-group my-4">
-					<input type="submit" value="Save" class="btn btn-primary" />
+					<input type="submit" value="Save" class="btn btn-primary offer-btn" />
 				</div>
 			</form>
 		</div>

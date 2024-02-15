@@ -2,12 +2,13 @@
 
 @{
     ViewData["Title"] = "Profile";
+    var cusID = User.Claims.FirstOrDefault(c => c.Type == "CustomerId")?.Value;
 }
 
     <div class="text-center">
 	<h1 class="text-capitalize mt-5">@Model.Username</h1>
 	<div class="my-4 profile-edit fs-5">
-        <i class="fa-solid fa-gear"></i> @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId })
+        <i class="fa-solid fa-gear"></i> @Html.ActionLink("Edit", "Edit", new { id = cusID })
 	</div>
 
     <hr/>

@@ -1,8 +1,9 @@
 ﻿    
 @if (User.Identity.IsAuthenticated)
 {
+    var firstName = User.Claims.FirstOrDefault(c => c.Type == "FirstName")?.Value;
     <div class="d-flex justify-content-around home-section">
-        <h2 class="text-capitalize protest-riot-regular">Welcome Back @User.Identity.Name</h2>
+        <h2 class="text-capitalize protest-riot-regular">Welcome Back @firstName</h2>
         <form action="@Url.Action("Bookings", "TravelProduct")" class="">
             <a id="booking" type="submit" class="text-bg-light fw-medium btn px-4 py-1 Buttons" asp-controller="TravelProduct" asp-action="Bookings">Your Bookings</a>
         </form>

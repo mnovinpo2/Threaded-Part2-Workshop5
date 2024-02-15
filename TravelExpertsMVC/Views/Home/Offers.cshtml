@@ -6,7 +6,7 @@
 
 <section>
     <h5 class="text-center">Browse Our Packages</h5>
-    <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist">
+    <ul class="nav nav-tabs justify-content-center mb-5" id="myTab" role="tablist">
         <li class="nav-item hover" role="presentation">
             <button class="nav-link active" id="polynesia-tab" data-bs-toggle="tab" data-bs-target="#polynesia" type="button" role="tab" aria-controls="poly-tab-pane" aria-selected="true">Polynesia</button>
         </li>
@@ -34,8 +34,15 @@
             <partial name="_CarrPartial" />
         </div>
     </div>
-    <div class="text-center">
-        <a class="btn nav-bg text-bg-light px-4 py-1 fw-medium my-3 offer-btn" asp-controller="TravelProduct" asp-action="BookPackage">Book Now!</a>
-    </div>
+        <div class="text-center mt-5">
+		<h5 class="protest-riot-regular">Interested?</h5>
+            @if (User.Identity.IsAuthenticated)
+		    {
+            <a class="btn nav-bg text-bg-light px-4 py-1 fw-medium offer-btn" asp-controller="TravelProduct" asp-action="BookPackage">Book Now!</a>
+            }else
+            {
+            <a class="btn nav-bg text-bg-light px-4 py-1 fw-medium offer-btn" asp-controller="Account" asp-action="Register">Sign up Now!</a>
+            }
+        </div> 
 </section>
  
