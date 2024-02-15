@@ -1,0 +1,101 @@
+﻿
+
+body {
+    font-family: "PT Serif";
+    background-image: url("tropwater.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.label2 {
+    margin-bottom: 17px;
+}
+
+button {
+    height: 50px;
+    width: 200px;
+    background-color: lightblue;
+    border-radius: 20%
+}
+
+    /*Makes button highlight when hovering */
+button:hover {
+        background-color: rgb(73, 205, 249);
+    }
+
+#book {
+    width: 80px;
+}
+
+#headText {
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 5px black;
+    z-index: 2;
+    margin: 50px;
+    font-weight: bold;
+}
+
+#details {
+    margin-left: 155px;
+    margin-right: 5px;
+    width: 100%;
+}
+
+#vacList {
+    height: 500px;
+}
+
+#container {
+    display: flex;
+   
+    
+    
+    width: 100%;
+    height:
+    /*900px*/
+    819px;
+    background-color: white;
+}
+
+#imgContainer {
+    position: relative;
+    padding: 1mm;
+    height: 10cm;
+    width: 5cm;
+   
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+}
+
+#image {
+    height: 9.85cm;
+    width: 8.85cm;
+    position: relative;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+
+.label2 {
+    color: black;
+    font-weight: bold;
+    z-index: 2;
+}
+
+button {
+    position: center;
+    z-index: 2;
+}
+
+#stars {
+    color: gold;
+}
+
+#getInfo {
+    color: black;
+}

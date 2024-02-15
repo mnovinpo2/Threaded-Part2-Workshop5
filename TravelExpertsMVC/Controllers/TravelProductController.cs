@@ -16,7 +16,12 @@ namespace TravelExpertsMVC.Controllers
             this.db = db;
         }
 
-       
+        public IActionResult PackageDetails(int packageNo)
+        {
+
+            ViewBag.PackageNo = packageNo;
+            return View();
+        }
         public IActionResult Bookings()
         {
             ViewBag.RandomGen = GenerateRandomString(7);
