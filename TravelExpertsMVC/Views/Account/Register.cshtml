@@ -4,6 +4,7 @@
     ViewData["Title"] = "Register";
 }
 
+}
 <h1 class="text-center display-5">Register</h1>
 
 <hr />
@@ -11,11 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@*             <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
-                <input asp-for="CustomerId" class="form-control" />
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
-            </div> *@
             <div class="form-group mb-3">
                 <label asp-for="Username" class="control-label">UserName</label>
                 <input asp-for="Username" class="form-control" />
@@ -48,7 +44,7 @@
             </div>
             <div class="form-group mb-3">
                 <label asp-for="CustProv" class="control-label">Province</label>
-                <input asp-for="CustProv" class="form-control" />
+                <select asp-for="CustProv" asp-items="@GetProvinceSelectList()" class="form-control"></select>
                 <span asp-validation-for="CustProv" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
@@ -86,4 +82,27 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@functions {
+    public SelectList GetProvinceSelectList()
+    {
+        var provinces = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "AB", Text = "Alberta" },
+            new SelectListItem { Value = "BC", Text = "British Columbia" },
+            new SelectListItem { Value = "MB", Text = "Manitoba" },
+            new SelectListItem { Value = "NB", Text = "New Brunswick" },
+            new SelectListItem { Value = "NL", Text = "Newfoundland and Labrador" },
+            new SelectListItem { Value = "NS", Text = "Nova Scotia" },
+            new SelectListItem { Value = "NT", Text = "Northwest Territories" },
+            new SelectListItem { Value = "NU", Text = "Nunavut" },
+            new SelectListItem { Value = "ON", Text = "Ontario" },
+            new SelectListItem { Value = "PE", Text = "Prince Edward Island" },
+            new SelectListItem { Value = "QC", Text = "Quebec" },
+            new SelectListItem { Value = "SK", Text = "Saskatchewan" },
+            new SelectListItem { Value = "YT", Text = "Yukon" }
+        };
+
+        return new SelectList(provinces, "Value", "Text");
+    }
 }
