@@ -16,15 +16,10 @@ public partial class Customer
     [StringLength(30)]
     public string Username { get; set; } = null!;
 
-    [StringLength(100, MinimumLength = 6, ErrorMessage = "The {0} must be at least {2} characters long.")]
+    [StringLength(30, MinimumLength = 6, ErrorMessage = "please enter a password.")]
     [DataType(DataType.Password)]
     [Display(Name = "Password")]
     public string Password { get; set; }
-
-    [DataType(DataType.Password)]
-    [Display(Name = "Confirm password")]
-    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-    public string ConfirmPassword { get; set; }
 
     [Required(ErrorMessage = "Please enter a first name.")]
     [StringLength(25)]
