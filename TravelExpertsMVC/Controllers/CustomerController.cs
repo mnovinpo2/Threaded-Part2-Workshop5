@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TravelExpertsMVC.Controllers
 {
@@ -62,7 +63,8 @@ namespace TravelExpertsMVC.Controllers
         public ActionResult Edit(int id)
         {
             Customer? cust = null!;
-            try
+
+			try
             {
                 cust = CustomerDB.FindByID(this.db, id);
             }
