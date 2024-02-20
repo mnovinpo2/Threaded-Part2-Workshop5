@@ -153,6 +153,8 @@ namespace TravelExpertsData
                 agencyComm = 280m;
                 prodsup = 39; // travel insurance
             }
+            Random random = new Random();
+            int itnum = random.Next(100, 1000);
             BookingDetail detail = new BookingDetail()
             {
                 //Generate rest of the attributes
@@ -166,7 +168,7 @@ namespace TravelExpertsData
                 BasePrice = basePrice,
                 AgencyCommission = agencyComm,
                 FeeId = newFeeId,
-                ItineraryNo = 123,
+                ItineraryNo = itnum,
                 ProductSupplierId = prodsup,
             };
 
