@@ -5,16 +5,19 @@
 <div class="row justify-content-center align-items-center fw-medium mt-5">
     <form asp-action="Login" method="post" class="col-md-4">
         <h3 class="display-6 text-center mb-3">Login</h3>
-          <div class="mb-3">
+
+        <div class="mb-3">
             <label class="form-label">Username: </label>
-            <input type="text" asp-for="Username" class="form-control"/>
+            <input type="text" asp-for="Username" class="form-control" />
             <span asp-validation-for="Username" class="text-danger"></span>
-          </div>
-          <div class="mb-3">
+        </div>
+
+        <div class="mb-3">
             <label class="form-label">Password: </label>
-            <input type="text" asp-for="Password" class="form-control" />
+            <input type="password" asp-for="Password" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
-          </div>
+        </div>
+
         <input type="submit" value="Login" class="btn btn-primary pkg-button" />
     </form>
 </div>

@@ -19,7 +19,7 @@
             </div>
             <div class="form-group mb-3">
                 <label asp-for="Password" class="control-label">Password</label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" type="password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
@@ -38,24 +38,19 @@
                 <span asp-validation-for="CustAddress" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
+                <label asp-for="CustPostal" class="control-label">Postal Code</label>
+                <input asp-for="CustPostal" class="form-control" />
+                <span asp-validation-for="CustPostal" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
                 <label asp-for="CustCity" class="control-label">City</label>
                 <input asp-for="CustCity" class="form-control" />
                 <span asp-validation-for="CustCity" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="CustProv" class="control-label">Province</label>
-                <select asp-for="CustProv" asp-items="@GetProvinceSelectList()" class="form-control"></select>
+                <select asp-for="CustProv" asp-items="@GetProvinceSelectList()" class="form-control"></select> @* The "Province" field is represented as a dropdown list *@
                 <span asp-validation-for="CustProv" class="text-danger"></span>
-            </div>
-            <div class="form-group mb-3">
-                <label asp-for="CustPostal" class="control-label">Postal Code</label>
-                <input asp-for="CustPostal" class="form-control" />
-                <span asp-validation-for="CustPostal" class="text-danger"></span>
-            </div>
-            <div class="form-group mb-3">
-                <label asp-for="CustCountry" class="control-label">Country</label>
-                <input asp-for="CustCountry" class="form-control" />
-                <span asp-validation-for="CustCountry" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="CustHomePhone" class="control-label">Home Phone</label>
@@ -84,6 +79,7 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 @functions {
+    // GetProvinceSelectList that generates and returns a SelectList containing Canadian provinces.
     public SelectList GetProvinceSelectList()
     {
         var provinces = new List<SelectListItem>

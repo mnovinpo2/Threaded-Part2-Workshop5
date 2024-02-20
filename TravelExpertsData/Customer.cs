@@ -16,9 +16,15 @@ public partial class Customer
     [StringLength(30)]
     public string Username { get; set; } = null!;
 
-    [Required(ErrorMessage = "Please enter a Password.")]
-    [StringLength(30)]
-    public string Password { get; set; } = null!;
+    [StringLength(100, MinimumLength = 6, ErrorMessage = "The {0} must be at least {2} characters long.")]
+    [DataType(DataType.Password)]
+    [Display(Name = "Password")]
+    public string Password { get; set; }
+
+    [DataType(DataType.Password)]
+    [Display(Name = "Confirm password")]
+    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    public string ConfirmPassword { get; set; }
 
     [Required(ErrorMessage = "Please enter a first name.")]
     [StringLength(25)]
@@ -52,13 +58,16 @@ public partial class Customer
     public string? CustCountry { get; set; }
 
     [Required(ErrorMessage = "Please enter a home phone number.")]
+    [RegularExpression(@"^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$", ErrorMessage = "Please enter a valid home phone number.")]
     [StringLength(20)]
     public string? CustHomePhone { get; set; }
 
+    [RegularExpression(@"^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$", ErrorMessage = "Please enter a valid business phone number.")]
     [StringLength(20)]
     public string CustBusPhone { get; set; } = null!;
 
     [StringLength(50)]
+    [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
     public string CustEmail { get; set; } = null!;
 
     public int? AgentId { get; set; }

@@ -1,56 +1,105 @@
-﻿@model IEnumerable<TravelExpertsData.Agent>
+﻿@model TravelExpertsMVC.Models.AgencyInfoViewModel
 
 @{
-    ViewData["Title"] = "AgentsByAgency";
+    ViewData["Title"] = "Agency Information";
 }
 
-<h1 class="my-5 protest-riot-regular">Contact Us </h1>
-<form asp-action="AgentsByAgency" method="post" class="mb-3">
+@functions {
+    // Helper function to format phone number
+    public string FormatPhoneNumber(string phoneNumber)
+    {
+        if (phoneNumber.Length == 10 && long.TryParse(phoneNumber, out long result))
+        {
+            return string.Format("({0}) {1}-{2}", phoneNumber.Substring(0, 3), phoneNumber.Substring(3, 3), phoneNumber.Substring(6));
+        }
+        return phoneNumber;
+    }
+}
+<h1 class="my-5 protest-riot-regular">Contact Us</h1>
+
+<form asp-controller="Contact" asp-action="AgentsByAgency" method="post" class="mb-3">
     <div class="w-50">
         <label class="form-label">Locations</label>
-        <select name="id" asp-items="@ViewBag.Agencies" onchange="this.form.submit()" class="form-select ">
+        <select name="id" asp-items="@ViewBag.Agencies" onchange="this.form.submit()" class="form-select">
         </select>
     </div>
 </form>
-<table class="table table-responsive table-striped table-hover table-sm">
-    <thead>
-        <tr class="table-primary">
-            <th>
-                @Html.DisplayName("First Name")
-            </th>
-            <th>
-                @Html.DisplayName("Last Name")
-            </th>
-            <th>
-                @Html.DisplayName("Phone Number")
-            </th>
-            <th>
-                @Html.DisplayName("Email")
-            </th>
-            <th>
-                @Html.DisplayName("Seniority")
-            </th>
-        </tr>
-    </thead>
-    <tbody class="table-group-divider">
-@foreach (var item in Model) {
-            <tr class="">
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtLastName)
-            </td>
-            <td>
-                    <a href="tel:@item.AgtBusPhone">@Html.DisplayFor(modelItem => item.AgtBusPhone)</a>
-            </td>
-            <td>
-                    <a href="mailto:@item.AgtEmail">@Html.DisplayFor(modelItem => item.AgtEmail)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtPosition)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="row">
+    @if (Model.SelectedAgencyId != 0)
+    {
+        <div class="mb-4">
+            <h2>Agency Information</h2>
+            <table class="table table-responsive table-striped table-hover table-sm">
+                <thead>
+                    <tr class="table-primary">
+                        <th>Agency Address</th>
+                        <th>Phone</th>
+                        <th>Fax</th>
+                        <th>City</th>
+                        <th>Postal Code</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    @foreach (var item in Model.Agency)
+                    {
+                        <tr>
+                            <td>@item.AgncyAddress</td>
+                            <td><a href="tel:@item.AgncyPhone">@FormatPhoneNumber(item.AgncyPhone)</a></td>
+                            <td><a href="tel:@item.AgncyFax">@FormatPhoneNumber(item.AgncyFax)</a></td>
+                            <td>@item.AgncyCity</td>
+                            <td>@item.AgncyPostal</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <div class="mb-4">
+        <h2>Agent Information</h2>
+        <table class="table table-responsive table-striped table-hover table-sm">
+            <thead>
+                <tr class="table-primary">
+                    <th>
+                        @Html.DisplayName("First Name")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Last Name")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Phone Number")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Email")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Seniority")
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @foreach (var item in Model.Agents)
+                {
+                    <tr class="">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AgtFirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AgtLastName)
+                        </td>
+                        <td>
+                            <a href="tel:@item.AgtBusPhone">@Html.DisplayFor(modelItem => item.AgtBusPhone)</a>
+                        </td>
+                        <td>
+                            <a href="mailto:@item.AgtEmail">@Html.DisplayFor(modelItem => item.AgtEmail)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AgtPosition)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
